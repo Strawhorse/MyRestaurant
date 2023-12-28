@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package myrestaurant;
+
+import javax.swing.JFrame;
 
 /**
  *
@@ -10,11 +8,16 @@ package myrestaurant;
  */
 public class MyRestaurant {
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+//        Create inital frame for app
+        JFrame frame = new JFrame("My Restaurant");
+        frame.setSize(300,200);
+        frame.setVisible(true);
+        
+        
+        
     }
     
 }
