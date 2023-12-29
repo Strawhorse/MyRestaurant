@@ -2,8 +2,11 @@ package myrestaurant;
 
 import java.awt.HeadlessException;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
@@ -16,6 +19,9 @@ public class MyRestaurant extends JFrame{
     JLabel Customer, Name, Contact, Foods, Drinks, Type;
     JTextField tfNumber, tfName, tfContact;
     JButton reset, print, receipt;
+    JComboBox cb1, cb2;
+    JRadioButton radio1, radio2;
+    JTextArea area1, area2;
     
 
     public MyRestaurant() throws HeadlessException {
@@ -43,14 +49,24 @@ public class MyRestaurant extends JFrame{
        tfContact.setBounds(150, 140, 300, 30);
        
        
-//       Now add the food and drink buttons
+//       Now add the food and drink buttons with lists
        Foods = new JLabel("Foods: ");
        Foods.setBounds(20, 200, 120, 30);
+       String[] foods = {"Pizza", "Burger", "Lasagna", "Bolognese", "Curry"}; 
+       cb1 = new JComboBox(foods);
+       cb1.setBounds(150, 200, 120, 30);
        
-       Drinks = new JLabel("Foods: ");
+       Drinks = new JLabel("Drinks: ");
        Drinks.setBounds(20, 260, 120, 30);
+       String[] drinks = {"Coke", "7-Up", "Sprite", "Orange", "Fanta"};
+       cb2 = new JComboBox(drinks);
+       cb2.setBounds(150, 260, 120, 30);
        
-       Type = new JLabel("Foods: ");
+       radio1 = new JRadioButton("Vegetarian");
+       radio1.setBounds(150, 320, 100, 30);
+       radio2 = new JRadioButton("Standard");
+       radio2.setBounds(300, 320, 100, 30);
+       Type = new JLabel("Type: ");
        Type.setBounds(20, 320, 120, 30);
        
        
@@ -78,7 +94,13 @@ public class MyRestaurant extends JFrame{
        getContentPane().add(reset);
        getContentPane().add(receipt);
        getContentPane().add(print);
+       getContentPane().add(cb1);
+       getContentPane().add(cb2);
+       getContentPane().add(radio1);
+       getContentPane().add(radio2);
 
+       
+//       Create visibility and turn on/off at exit
        setVisible(true);
        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
