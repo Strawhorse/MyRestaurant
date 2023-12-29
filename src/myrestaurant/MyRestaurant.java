@@ -1,6 +1,12 @@
 package myrestaurant;
 
 import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.print.PrinterException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -62,15 +68,22 @@ public class MyRestaurant extends JFrame{
        cb2 = new JComboBox(drinks);
        cb2.setBounds(150, 260, 120, 30);
        
+      
+       Type = new JLabel("Type: ");
+       Type.setBounds(20, 320, 120, 30);
        radio1 = new JRadioButton("Vegetarian");
        radio1.setBounds(150, 320, 100, 30);
        radio2 = new JRadioButton("Standard");
        radio2.setBounds(300, 320, 100, 30);
-       Type = new JLabel("Type: ");
-       Type.setBounds(20, 320, 120, 30);
+       
+//       create a button group to hold the variable for the buttons
+       ButtonGroup group = new ButtonGroup();
+       group.add(radio1);
+       group.add(radio2);
        
        
-//       add buttons
+       
+//       add buttons for functionality
         reset = new JButton("Reset");
         reset.setBounds(500,20,80,30);
        
@@ -79,6 +92,9 @@ public class MyRestaurant extends JFrame{
         
         receipt = new JButton("Receipt");
         receipt.setBounds(700,20,80,30);
+        
+        area1 = new JTextArea("Details of meal: \n");
+        area1.setBounds(500, 60, 280, 200);
         
        
 //       add all the content panes; can be done quicker by adding them all to a panel and then adding the panel to the frame
@@ -94,11 +110,39 @@ public class MyRestaurant extends JFrame{
        getContentPane().add(reset);
        getContentPane().add(receipt);
        getContentPane().add(print);
+       getContentPane().add(area1);
        getContentPane().add(cb1);
        getContentPane().add(cb2);
        getContentPane().add(radio1);
        getContentPane().add(radio2);
 
+       
+//       add event handling for buttons
+       reset.addActionListener((ActionEvent e) -> {
+           tfContact.setText("");
+           tfName.setText("");
+           tfNumber.setText("");
+       });
+       
+//       Initial way to do this action method
+//       reset.addActionListener(new ActionListener() {
+//           @Override
+//           public void actionPerformed(ActionEvent e) {
+//               tfContact.setText("");
+//               tfName.setText("");
+//               tfNumber.setText("");
+//           }
+//       });
+
+       print.addActionListener((ActionEvent e) -> {
+           try {
+               area1.print();
+           } catch (PrinterException ex) {
+               Logger.getLogger(MyRestaurant.class.getName()).log(Level.SEVERE, "Something happened", ex);
+           }
+       });
+        
+       
        
 //       Create visibility and turn on/off at exit
        setVisible(true);
