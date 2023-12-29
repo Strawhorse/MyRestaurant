@@ -1,9 +1,8 @@
 package myrestaurant;
 
-import java.awt.FlowLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -17,13 +16,15 @@ public class MyRestaurant {
 //        Create inital frame for app
         JFrame frame = new JFrame("My Restaurant");
         JLabel label = new JLabel("My restaurant");
-        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(label);
-        frame.add(panel);
+        label.setVerticalAlignment(JLabel.TOP);
+        label.setHorizontalAlignment(JLabel.CENTER);
+        
+        frame.add(label);
         
 
-        frame.setSize(300,200);
+        frame.setSize(500,300);
         frame.setVisible(true);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         
         
