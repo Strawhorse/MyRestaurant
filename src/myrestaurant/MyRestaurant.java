@@ -122,6 +122,7 @@ public class MyRestaurant extends JFrame{
            tfContact.setText("");
            tfName.setText("");
            tfNumber.setText("");
+           area1.setText("Details of meal: \n");
        });
        
 //       Initial way to do this action method
