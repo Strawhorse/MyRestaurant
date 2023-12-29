@@ -1,31 +1,40 @@
 package myrestaurant;
 
+import java.awt.HeadlessException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.WindowConstants;
+import javax.swing.JTextField;
 
 /**
  *
  * @author new
  */
-public class MyRestaurant {
+public class MyRestaurant extends JFrame{
+    
+    JLabel Customer, Name, Contact;
+    JTextField tfNumber, tfName, tfContact;
+    
+    
+
+    public MyRestaurant() throws HeadlessException {
+    
+        //        Create inital frame for app
+        setTitle("My Restaurant");
+        setSize(600,500);
+        
+       Customer = new JLabel("Customer No: ");
+       Customer.setBounds(20, 20, 120, 30);
+       
+
+        
+    }
+    
+    
 
 
     public static void main(String[] args) {
         
-//        Create inital frame for app
-        JFrame frame = new JFrame("My Restaurant");
-        JLabel label = new JLabel("My restaurant");
-        label.setVerticalAlignment(JLabel.TOP);
-        label.setHorizontalAlignment(JLabel.CENTER);
-        
-        frame.add(label);
-        
 
-        frame.setSize(500,300);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        
         
         
         
