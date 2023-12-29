@@ -1,6 +1,7 @@
 package myrestaurant;
 
 import java.awt.HeadlessException;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -12,9 +13,9 @@ import javax.swing.WindowConstants;
  */
 public class MyRestaurant extends JFrame{
     
-    JLabel Customer, Name, Contact;
+    JLabel Customer, Name, Contact, Foods, Drinks, Type;
     JTextField tfNumber, tfName, tfContact;
-    
+    JButton reset, print, receipt;
     
 
     public MyRestaurant() throws HeadlessException {
@@ -22,7 +23,7 @@ public class MyRestaurant extends JFrame{
         //        Create inital frame for app
        setTitle("My Restaurant");
 //        setMinimumSize(minimumSize);
-       setSize(600,500);
+       setSize(900,500);
        setLayout(null);
                 
 //       set initial labels
@@ -41,6 +42,29 @@ public class MyRestaurant extends JFrame{
        tfContact = new JTextField();
        tfContact.setBounds(150, 140, 300, 30);
        
+       
+//       Now add the food and drink buttons
+       Foods = new JLabel("Foods: ");
+       Foods.setBounds(20, 200, 120, 30);
+       
+       Drinks = new JLabel("Foods: ");
+       Drinks.setBounds(20, 260, 120, 30);
+       
+       Type = new JLabel("Foods: ");
+       Type.setBounds(20, 320, 120, 30);
+       
+       
+//       add buttons
+        reset = new JButton("Reset");
+        reset.setBounds(500,20,80,30);
+       
+        print = new JButton("Print");
+        print.setBounds(600,20,80,30);
+        
+        receipt = new JButton("Receipt");
+        receipt.setBounds(700,20,80,30);
+        
+       
 //       add all the content panes; can be done quicker by adding them all to a panel and then adding the panel to the frame
        getContentPane().add(Customer);
        getContentPane().add(Name);
@@ -48,6 +72,12 @@ public class MyRestaurant extends JFrame{
        getContentPane().add(tfNumber);
        getContentPane().add(tfContact);
        getContentPane().add(tfName);
+       getContentPane().add(Foods);
+       getContentPane().add(Drinks);
+       getContentPane().add(Type);
+       getContentPane().add(reset);
+       getContentPane().add(receipt);
+       getContentPane().add(print);
 
        setVisible(true);
        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
