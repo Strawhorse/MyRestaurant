@@ -25,6 +25,9 @@ public class MyRestaurant extends JFrame{
     JRadioButton radio1, radio2;
     JTextArea area1, area2;
     
+//    set prices for food and drinks
+    int drinkPrice, foodPrice, total;
+    
 
     public MyRestaurant() {
     
@@ -120,6 +123,9 @@ public class MyRestaurant extends JFrame{
            tfContact.setText("");
            tfName.setText("");
            tfNumber.setText("");
+           group.clearSelection();
+           cb1.setSelectedIndex(0);
+           cb2.setSelectedIndex(0);
            area1.setText("Details of meal: \n");
        });
        
@@ -144,17 +150,37 @@ public class MyRestaurant extends JFrame{
        
        
         receipt.addActionListener((ActionEvent e) -> {
-           area1.setText("Receipt details: \n");
-           area1.setText(area1.getText()+ "Customer number: " + 
+            area1.setText("Receipt details: \n");
+            area1.setText(area1.getText()+ "Customer number: " + 
                    tfNumber.getText() + "\nCustomer Name: " + 
                    tfName.getText() + "\nCustomer Contact: " + 
                    tfContact.getText()+ "\nBill Details: \n----------------\n");
            
 //           add in bill details
 
-            area1.setText(area1.getText() + "Food item: " + cb1.getSelectedItem() + "\n");
-            area1.setText(area1.getText() + "Drink item: " + cb2.getSelectedItem() + "\n");
+            switch(cb1.getSelectedIndex()){
+                case 1 -> foodPrice = 2;
+                case 2 -> foodPrice = 4;
+                case 3 -> foodPrice = 3;
+                case 4 -> foodPrice = 5;
+                case 5 -> foodPrice = 3;
+            }
+            switch(cb2.getSelectedIndex()){
+                case 1 -> drinkPrice = 2;
+                case 2 -> drinkPrice = 3;
+                case 3 -> drinkPrice = 3;
+                case 4 -> drinkPrice = 2;
+                case 5 -> drinkPrice = 3;
+            }
+            
+            total = foodPrice+drinkPrice;
+
+            area1.setText(area1.getText() + "Food item: " + cb1.getSelectedItem() + " €" + foodPrice + "\n");
+            area1.setText(area1.getText() + "Drink item: " + cb2.getSelectedItem() + " €" + drinkPrice + "\n");
             area1.setText(area1.getText() + "Customer type: " + group.getSelection().getActionCommand() + "\n");
+            area1.setText(area1.getText() + """
+                          ----------------
+                          Bill total:  \u20ac""" + total);
         });
         
        
