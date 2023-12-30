@@ -2,7 +2,6 @@ package myrestaurant;
 
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.print.PrinterException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,10 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-/**
- *
- * @author new
- */
+
 public class MyRestaurant extends JFrame{
     
     JLabel Customer, Name, Contact, Foods, Drinks, Type;
@@ -30,7 +26,7 @@ public class MyRestaurant extends JFrame{
     JTextArea area1, area2;
     
 
-    public MyRestaurant() throws HeadlessException {
+    public MyRestaurant() {
     
         //        Create inital frame for app
        setTitle("My Restaurant");
@@ -135,13 +131,23 @@ public class MyRestaurant extends JFrame{
 //           }
 //       });
 
-       print.addActionListener((ActionEvent e) -> {
+        print.addActionListener((ActionEvent e) -> {
            try {
                area1.print();
            } catch (PrinterException ex) {
                Logger.getLogger(MyRestaurant.class.getName()).log(Level.SEVERE, "Something happened", ex);
            }
-       });
+        });
+       
+       
+       
+        receipt.addActionListener((ActionEvent e) -> {
+           area1.setText("Receipt details: \n");
+           area1.setText(area1.getText()+ "Customer number: " + 
+                   tfNumber.getText() + "\nCustomer Name: " + 
+                   tfName.getText() + "\nCustomer Contact: " + 
+                   tfContact.getText());
+        });
         
        
        
