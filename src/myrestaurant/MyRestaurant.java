@@ -68,8 +68,10 @@ public class MyRestaurant extends JFrame{
        Type = new JLabel("Type: ");
        Type.setBounds(20, 320, 120, 30);
        radio1 = new JRadioButton("Vegetarian");
+       this.radio1.setActionCommand("Vegetarian");
        radio1.setBounds(150, 320, 100, 30);
        radio2 = new JRadioButton("Standard");
+       this.radio2.setActionCommand("Standard");
        radio2.setBounds(300, 320, 100, 30);
        
 //       create a button group to hold the variable for the buttons
@@ -146,7 +148,13 @@ public class MyRestaurant extends JFrame{
            area1.setText(area1.getText()+ "Customer number: " + 
                    tfNumber.getText() + "\nCustomer Name: " + 
                    tfName.getText() + "\nCustomer Contact: " + 
-                   tfContact.getText());
+                   tfContact.getText()+ "\nBill Details: \n----------------\n");
+           
+//           add in bill details
+
+            area1.setText(area1.getText() + "Food item: " + cb1.getSelectedItem() + "\n");
+            area1.setText(area1.getText() + "Drink item: " + cb2.getSelectedItem() + "\n");
+            area1.setText(area1.getText() + "Customer type: " + group.getSelection().getActionCommand() + "\n");
         });
         
        
